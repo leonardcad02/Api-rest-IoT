@@ -4,6 +4,7 @@ import os
 import requests
 import time
 import datetime
+from threading import Timer
 
 
 
@@ -16,18 +17,22 @@ t = time.time()
 timegood = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S')
 
 # Convierte la respuesta del servidor de Wemos en un diccionario de Python
-sensor_data = response.json()
+while (1):
+    sensor_data = response.json()
 
-temperature = sensor_data['variables']['temperature']
-humidity = sensor_data['variables']['humidity']
-pollution = sensor_data['variables']['contaminacion']
+    temperature = sensor_data['variables']['temperature']
+    humidity = sensor_data['variables']['humidity']
+    pollution = sensor_data['variables']['contaminacion']
 
 
 
-# Hace el promedio de las mediciones
-#avtemp = ((temperature+temperature2/2)) 
-#avhumi = ((humidity+humidity2)/2)
-#avpoll = ((pollution+pollution2)/2)
+    # Hace el promedio de las mediciones
+    #avtemp = ((temperature+temperature2/2)) 
+    #avhumi = ((humidity+humidity2)/2)
+    #avpoll = ((pollution+pollution2)/2)
 
-# Envia el tweet en mi cuenta
-print('Soy un bot creado por Cristian \n La temperatura es: {0} ℃ \n La humedad es: {1} %% RH \n La concentración es: {2} %% PPM \n {3}' .format(temperature, humidity, pollution, timegood))
+    # Envia el tweet en mi cuenta
+
+    print (temperature, humidity, pollution)
+    Timer(30.0).start()
+    

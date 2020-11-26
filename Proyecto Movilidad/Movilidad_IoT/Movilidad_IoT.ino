@@ -24,8 +24,8 @@ float humidity, temperature, mq;
 
 //Wifi
 
-const char* ssid = "Fla Garcia";
-const char* password = "1049633057j";
+const char* ssid = "UNE_HFC_DA8D";
+const char* password = "C16FUA9B";
 
 //Port
 #define LISTEN_PORT 80
@@ -37,14 +37,14 @@ WiFiServer server (LISTEN_PORT);
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(115200);
   dht.begin();
 
 
   //init variables API
   rest.variable("temperature", &temperature);
   rest.variable ("humidity", &humidity);
-  rest.variable ("Polution",&mq);
+  rest.variable ("polution",&mq);
 
   
   //Name ID 
@@ -74,9 +74,9 @@ void loop() {
   delay(1000);
     
   //read of sensors 
-  mq = analogRead(MQ); //MQ135
-  humidity = dht.readHumidity(); // RH % 0-100
-  temperature = dht.readTemperature(); // 0 - 100°C
+  mq = 32;//analogRead(MQ); //MQ135
+  humidity = 55;//dht.readHumidity(); // RH % 0-100
+  temperature = 65;//dht.readTemperature(); // 0 - 100°C
   Serial.println(humidity);
   Serial.println(temperature);
   
